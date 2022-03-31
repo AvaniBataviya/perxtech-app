@@ -11,7 +11,8 @@ https://leafy-hotteok-e4af94.netlify.app/
 
 ## Setup project 
 clone this repo run below command 
+
  `npm install`  
  `npm start`
  
-run test cased using `npm test` command
+run test case using `npm test` command
