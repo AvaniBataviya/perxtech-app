@@ -7,7 +7,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(2),
     flexGrow: 1,
-    backgroundColor: '#e9e9e9'
+    backgroundColor: '#e9e9e9',
+    minHeight: 'calc(100vh - 120px)'
   },
 }));
 

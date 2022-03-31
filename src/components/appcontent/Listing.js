@@ -4,8 +4,7 @@ import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   coulmn: {
-    padding: theme.spacing(3),
-    width: '100%',
+    minHeight: '300px'
   },
   title: {
     fontWeight: 'bold',
@@ -28,7 +27,7 @@ const Listing = () => {
     : userData.map((sectionData) => {
       return (
         <Grid item xs={12} sm={6} key={sectionData.title}>
-          <Card>
+          <Card className={classes.coulmn}>
             <CardContent>
               <Typography component="h4" className={classes.title} id={sectionData.title}>
                 {sectionData.title}
