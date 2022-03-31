@@ -39,8 +39,8 @@ const Listing = () => {
                       const isRepo = sectionData.title === 'Repositories';
                       const link = `https://github.com/${isRepo ? repo?.full_name : repo.login}`;
                       return (
-                        <>
-                          <ListItem key={repo.id} button >
+                        <React.Fragment key={repo.id}>
+                          <ListItem button >
                             <ListItemAvatar>
                               <Avatar alt={isRepo ? repo?.owner?.login : repo?.login}
                                 src={isRepo ? repo?.owner?.avatar_url : repo?.avatar_url}
@@ -53,7 +53,7 @@ const Listing = () => {
                           </ListItem>
                           {index !== sectionData.data?.length - 0 &&
                             <Divider variant="inset" component="li" />}
-                        </>
+                        </React.Fragment>
                       );
                     }) :
                       <Typography component="h4" variant="subtitle2">

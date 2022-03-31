@@ -12,7 +12,6 @@ export const userReducer = (
 ) => {
   switch (action.type) {
     case userActionType.ADD_USER_INFO: {
-      console.log(action.payload, 'action.payload');
       return {
         ...state,
         repositories: [...action.payload.repositories],
@@ -22,7 +21,6 @@ export const userReducer = (
     }
 
     case userActionType.SET_LOADING: {
-      console.log('action.payload', action.payload);
       return {
         isLoading: action.payload.isLoading,
       };

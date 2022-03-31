@@ -29,7 +29,7 @@ const SeachBar = () => {
           id="userName"
           label="Enter github user name"
           value={userName}
-          style={{ marginRight: '16px' }}
+          style={{ marginRight: '16px', minWidth: '200px' }}
           onChange={(e) => setUserName(e.target.value)}
         />
         <Button
