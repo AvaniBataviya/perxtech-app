@@ -37,6 +37,7 @@ const Listing = () => {
                   {
                     sectionData.data?.length > 0 ? sectionData.data.map((repo, index) => {
                       const isRepo = sectionData.title === 'Repositories';
+                      const link = `https://github.com/${isRepo ? repo?.full_name : repo.login}`;
                       return (
                         <>
                           <ListItem key={repo.id} button >
@@ -45,7 +46,7 @@ const Listing = () => {
                                 src={isRepo ? repo?.owner?.avatar_url : repo?.avatar_url}
                               />
                             </ListItemAvatar>
-                            <Link underline="none" href={repo.url} target="_blank" rel="noreferrer">
+                            <Link underline="none" href={link} target="_blank" rel="noreferrer">
                               <ListItemText id={repo[sectionData.key]} primary={repo[sectionData.key]} />
                               <ListItemText secondary={repo?.description} display="block" />
                             </Link>
