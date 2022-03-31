@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Link, List, ListItem, ListItemText, makeStyles, Typography } from '@material-ui/core';
+import { Avatar, Box, Card, CardContent, CircularProgress, Divider, Grid, Link, List, ListItem, ListItemAvatar, ListItemText, makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
@@ -21,45 +21,52 @@ const Listing = () => {
     { title: 'Organization', data: organizations, key: 'login' },
   ];
 
-  return (
-    <Box mt={3} display="flex" justifyContent="center">
-      {
-        isLoading ?
-          <CircularProgress />
-          : userData.map((sectionData, index) => {
-            return (
-              <Box className={classes.coulmn}
-                key={sectionData.title}
-                style={{ borderRight: index === 0 ? '1px solid' : '' }}
-              >
-                <Typography component="h4" className={classes.title}>
-                  {sectionData.title}
-                </Typography>
-                <Box>
-                  <List dense>
-                    {
-
-                      sectionData.data?.length > 0 ? sectionData.data.map((repo) => {
-                        return (
+  return isLoading
+    ? <Box mt={3} width="100%" display="flex" justifyContent="center">
+      <CircularProgress id="loading" />
+    </Box>
+    : userData.map((sectionData) => {
+      return (
+        <Grid item xs={12} sm={6} key={sectionData.title}>
+          <Card>
+            <CardContent>
+              <Typography component="h4" className={classes.title} id={sectionData.title}>
+                {sectionData.title}
+              </Typography>
+              <Box>
+                <List dense>
+                  {
+                    sectionData.data?.length > 0 ? sectionData.data.map((repo, index) => {
+                      const isRepo = sectionData.title === 'Repositories';
+                      return (
+                        <>
                           <ListItem key={repo.id} button >
-                            <Link href={repo.url} underline="none" target="_blank" rel="noreferrer">
-                              <ListItemText primary={repo[sectionData.key]} />
+                            <ListItemAvatar>
+                              <Avatar alt={isRepo ? repo?.owner?.login : repo?.login}
+                                src={isRepo ? repo?.owner?.avatar_url : repo?.avatar_url}
+                              />
+                            </ListItemAvatar>
+                            <Link underline="none" href={repo.url} target="_blank" rel="noreferrer">
+                              <ListItemText id={repo[sectionData.key]} primary={repo[sectionData.key]} />
+                              <ListItemText secondary={repo?.description} display="block" />
                             </Link>
                           </ListItem>
-                        );
-                      }) :
-                        <Typography component="h4" variant="subtitle2">
-                          No Data Found
-                        </Typography>
-                    }
-                  </List>
-                </Box>
+                          {index !== sectionData.data?.length - 0 &&
+                            <Divider variant="inset" component="li" />}
+                        </>
+                      );
+                    }) :
+                      <Typography component="h4" variant="subtitle2">
+                        No Data Found
+                      </Typography>
+                  }
+                </List>
               </Box>
-            );
-          })
-      }
-    </Box>
-  );
+            </CardContent>
+          </Card>
+        </Grid>
+      );
+    });
 };
 
 export default Listing;

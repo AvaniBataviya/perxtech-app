@@ -12,9 +12,9 @@ export const get = (url, params) => {
 };
 
 const getAllRepositories = (userName) => get(`${userName}/repos`);
-const getAllOrganisations = (userName) => get(`${userName}/orgs`);
+const getAllOrganizations = (userName) => get(`${userName}/orgs`);
 
 export {
   getAllRepositories,
-  getAllOrganisations
+  getAllOrganizations
 };

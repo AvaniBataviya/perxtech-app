@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme) => ({
   header: {
     textAlign: 'center',
     padding: theme.spacing(2),
-    backgroundColor: theme.palette.success.main,
+    backgroundColor: theme.palette.primary.dark,
     color: 'white'
   }
 }));

@@ -1,25 +1,25 @@
 import React from 'react';
-import { Card, CardContent, makeStyles } from '@material-ui/core';
+import { Grid, makeStyles } from '@material-ui/core';
 import SeachBar from './appcontent/SeachBar';
 import Listing from './appcontent/Listing';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: '65vw',
-    margin: '32px  auto',
-    minHeight: '400px'
+    padding: theme.spacing(2),
+    flexGrow: 1,
+    backgroundColor: '#e9e9e9'
   },
 }));
 
 const AppContent = () => {
   const classes = useStyles();
   return (
-    <Card className={classes.root}>
-      <CardContent>
+    <div className={classes.root}>
+      <Grid container spacing={3}>
         <SeachBar />
         <Listing />
-      </CardContent>
-    </Card>
+      </Grid>
+    </div>
   );
 };
 
