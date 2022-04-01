@@ -8,7 +8,13 @@ export const get = (url, params) => {
       params,
     })
     .then((response) => response.data)
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      const { response } = error;
+      if (error && response) {
+        const { message } = response.data;
+        alert(message ? message : 'Some thing went wrong!');
+      }
+    });
 };
 
 const getAllRepositories = (userName) => get(`${userName}/repos`);

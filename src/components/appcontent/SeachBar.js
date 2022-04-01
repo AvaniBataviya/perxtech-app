@@ -9,7 +9,7 @@ const SeachBar = () => {
   const dispatch = useDispatch();
 
   const onSearch = () => {
-    dispatch({ type: userActionType.SET_LOADING, payload: { isLoading: true } });
+
     Promise.all([getAllRepositories(userName), getAllOrganizations(userName)])
       .then((response) => {
         if (response) {
@@ -18,6 +18,8 @@ const SeachBar = () => {
             payload: { repositories: response[0], organizations: response[1] }
           });
         }
+      }).catch(() => {
+        dispatch({ type: userActionType.SET_LOADING, payload: { isLoading: true } });
       });
   };
 
